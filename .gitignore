@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 # My Ignores
+.bash_profile
 .secret_settings.py
 .theia
 .gitpod.yml
