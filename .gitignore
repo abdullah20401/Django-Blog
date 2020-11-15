@@ -133,3 +133,4 @@ dmypy.json
 .secret_settings.py
 .theia
 .gitpod.yml
+django_blog/django_blog/secret_settings.py
