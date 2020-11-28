@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -133,18 +135,42 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-from .secret_settings import EMAIL_USER, EMAIL_PASS
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar': [
+        ['Undo', 'Redo'],
+        ["Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+        ['NumberedList', 'BulletedList', "Indent", "Outdent", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+        ["Image", "Table", "HorizontalRule", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"],
+        ["Styles", "Format", "Font", "FontSize"],
+        ['RemoveFormat'],
+        ['TextColor', 'BGColor'],
+        ["Maximize"],
+        ],
+
+    'width': 'auto',
+
+          },
+    }
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
+
+
+
+from . import secret_settings
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = EMAIL_USER
-EMAIL_HOST_PASSWORD = EMAIL_PASS
+EMAIL_HOST_USER = secret_settings.EMAIL_USER
+EMAIL_HOST_PASSWORD = secret_settings.EMAIL_PASS
 
-from .secret_settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME
-AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = secret_settings.AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = secret_settings.AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = secret_settings.AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None

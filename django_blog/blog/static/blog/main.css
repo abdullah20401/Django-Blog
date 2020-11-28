@@ -59,6 +59,12 @@ a.article-title:hover {
   margin-right: 16px;
 }
 
+.article-small-img {
+  height: 30px;
+  width: 30px;
+  margin-right: 16px;
+}
+
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
@@ -85,4 +91,8 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.mg-bottom {
+  margin-bottom: 10px;
 }
